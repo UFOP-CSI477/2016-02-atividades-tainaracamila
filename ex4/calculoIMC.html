@@ -1,0 +1,87 @@
+
+<html>
+
+<head>
+	<meta charset = "utf-8">
+	<title> Calculo IMC e Peso Ideal via JavaScript </title>
+
+  <script>
+
+		function calcularIMC() {
+
+			if(document.calculoimc.peso.value.length==0) {
+				window.alert("Informe o peso!");
+				document.calculoimc.peso.focus();
+				return;
+			} else if (document.calculoimc.altura.value.length==0) {
+				window.alert("Informe a altura!");
+				document.calculoimc.altura.focus();
+				return;
+			}
+      var x = parseFloat(document.calculoimc.peso.value);
+      var y = parseFloat(document.calculoimc.altura.value);
+			var z = x/(y*y);
+
+      if (z < 18.5) {
+        document.calculoimc.resultado1.value = "Abaixo do peso";
+      }
+
+      if (18.6 < z && z < 24.9) {
+        document.calculoimc.resultado1.value = "Peso Ideal";
+      } else if (25.0 < z && z < 29.9) {
+        document.calculoimc.resultado1.value = "Levemente acima do peso";
+      } else if (30.0 < z && z < 34.9) {
+        document.calculoimc.resultado1.value = "Obesidade grau I";
+      } else if (35.0 < z && z < 39.9) {
+        document.calculoimc.resultado1.value = "Obesidade grau II (severa)";
+      } else {
+        document.calculoimc.resultado1.value = "Obesidade III (mórbida) ";
+      }
+		}
+
+   function calcularPI() {
+      var x = parseFloat(document.calculoPI.altura.value);
+
+      if(document.calculoPI.altura.value.length==0) {
+        window.alert("Informe a altura numero!");
+        document.calculoPI.altura.focus();
+        return;
+      }
+
+      var pi = 18.6*(x*x);
+      var pf = 24.9*(x*x);
+
+      document.calculoPI.resultado2.value = pi;
+      document.calculoPI.resultado3.value = pf;
+
+    }
+
+	</script>
+
+</head>
+
+<body>
+
+  <h3> Calculo IMC </h3>
+	<form name="calculoimc" action="#">
+		Peso: <input type="text" name="peso"><br>
+		Altura: <input type="text" name="altura"><br>
+		Resultado: <input type="text" name="resultado1"><br>
+
+		<button type="button" onclick="calcularIMC()"> Calcular </button>
+
+	</form>
+
+  <h3> Calculo Intervalo Peso Ideal </h3>
+  <form name="calculoPI" action="#">
+		Altura: <input type="text" name="altura"><br>
+		Resultado: [<input type="text" name="resultado2"> , <input type="text" name="resultado3">]<br>
+
+		<button type="button" onclick="calcularPI()"> Calcular </button>
+
+	</form>
+
+
+</body>
+
+</html>
