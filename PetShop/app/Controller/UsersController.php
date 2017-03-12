@@ -25,7 +25,7 @@ class UsersController extends AppController {
         // validar
         $user=$this->validar();
         if($user!=false){
-          $this->Flash->set('Acesso realizado com sucesso!');
+          $this->Flash->set('Bem-vindo(a) ' . $user['0']['User']['nome']);
           $this->Session->write('User', $user);
           $this->redirect(array('action'=>'index'));
           exit();
